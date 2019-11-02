@@ -13,15 +13,11 @@ export default {
     /**
      * envia action para o pai gerar uma action
      */
-    actionItemList(action, item, status = false) {
-      console.log(action);
-      console.log(item);
-      console.log(action);
-
+    actionItemList(action, item, checked = false) {
       this.actionButton = {
         action,
         item,
-        status,
+        checked,
       }
       this.$emit('actionItemList', this.actionButton)
     },

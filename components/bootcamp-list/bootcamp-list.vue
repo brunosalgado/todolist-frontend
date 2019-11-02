@@ -2,9 +2,9 @@
   <ul>
       <li
         v-for="item in itemsList"
-        v-bind:key="item.text"
+        v-bind:key="item._id"
       >
-        {{ `task: ${item.text} - status: ${item.status}` }}
+        {{ `task: ${item.description} - status: ${item.checked}` }}
         <span>
           <button
             @click="actionItemList('delete', item)"
@@ -12,7 +12,7 @@
           X
           </button>
           <button
-            @click="actionItemList('toggle', item, item.status == 1 ? '2' : '1')"
+            @click="actionItemList('toggle', item, item.checked == 1 ? '2' : '1')"
           >
           V
           </button>

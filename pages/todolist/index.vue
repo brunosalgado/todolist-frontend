@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">
+      <h1 v-if="todos.length === 0" class="title">
         todolist page
       </h1>
+      <ul v-else>
+        <li v-for="todo in todos" :key="todo._id">{{ todo.description }}</li>
+      </ul>
       <div class="links">
         <nuxt-link class="button--grey" to="/">HOME</nuxt-link>
       </div>
@@ -13,6 +16,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      todos: []
+    }
+  },
+
+  mounted() {
+    this.$axios.$get("items")
+      .then((response) => {
+        this.todos = response
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+  }
 }
 </script>
 

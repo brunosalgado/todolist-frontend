@@ -1,4 +1,6 @@
 
+require('dotenv').config()
+
 export default {
   mode: 'spa',
   /*

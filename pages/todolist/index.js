@@ -32,10 +32,11 @@ export default {
      * conforme action faz alteração na lista
      */
     actionItemList(value) {
+      console.log(value);
       if (value.action == 'delete') {
         this.deleteItemList(value)
       }
-      if (value.action == 'changeState') {
+      if (value.action == 'toggle') {
         this.changeStateItemList(value)
       }
     },
@@ -44,7 +45,7 @@ export default {
      */
     deleteItemList(value) {
       this.itemsList.map((i, k) => {
-        if (i.id == value.id) {
+        if (i.id == value.item.id) {
           this.itemsList.splice(k, 1)
         }
       })
@@ -54,7 +55,7 @@ export default {
      */
     changeStateItemList(value) {
       let itemsList = this.itemsList.find((i) => {
-        return i.id == value.id
+        return i.id == value.item.id
       })
       itemsList.status = value.status
     },

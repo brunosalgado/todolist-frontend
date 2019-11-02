@@ -1,6 +1,9 @@
 export default {
   name: 'bootcamp-list',
   props: {
+    /**
+    * props que recebe valor no component pai
+    */
     itemsList: {
       type: Array,
       required: true,
@@ -10,11 +13,15 @@ export default {
     /**
      * envia action para o pai gerar uma action
      */
-    actionItemList(action, id, status) {
+    actionItemList(action, item, status = false) {
+      console.log(action);
+      console.log(item);
+      console.log(action);
+
       this.actionButton = {
         action,
-        id,
-        status
+        item,
+        status,
       }
       this.$emit('actionItemList', this.actionButton)
     },

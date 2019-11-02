@@ -1,20 +1,33 @@
 <template>
-  <ul>
+  <ul class="list">
+    <transition-group name="list">
       <li
         v-for="item in itemsList"
         v-bind:key="item._id"
+        :class="{'list__item--completed': item.checked}"
+        class="list__item"
       >
-        {{ `task: ${item.description} - status: ${item.checked}` }}
-        <span>
+        {{ item.description }}
+        <span class="options">
           <button
             @click="actionItemList('delete', item)"
+            class="remove-item"
           >
-          X
+            <img
+              class="icon"
+              src="/icon-delete.svg"
+              alt="Delete task"
+            />
           </button>
           <button
             @click="actionItemList('toggle', item, item.checked == 1 ? '2' : '1')"
+            class="complete-item"
           >
-          V
+            <img
+              class="icon"
+              src="/icon-check.svg"
+              alt="Complete task"
+            />
           </button>
         </span>
       </li>
@@ -23,6 +36,4 @@
 </template>
 
 <script src="./bootcamp-list.js" />
-<style media="screen">
-
-</style>
+<style src="./bootcamp-list.scss" lang="scss" scoped />

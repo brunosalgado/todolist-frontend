@@ -7,12 +7,12 @@
         {{ `task: ${item.text} - status: ${item.status}` }}
         <span>
           <button
-            @click="actionItemList('delete', item.id, item.status)"
+            @click="actionItemList('delete', item)"
           >
           X
           </button>
           <button
-            @click="actionItemList('changeState', item.id, item.status == 1 ? '2' : '1')"
+            @click="actionItemList('toggle', item, item.status == 1 ? '2' : '1')"
           >
           V
           </button>

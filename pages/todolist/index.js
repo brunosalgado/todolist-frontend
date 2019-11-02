@@ -23,8 +23,8 @@ export default {
     addItemList(value) {
       this.itemsList.push({
         id: this.i++,
-        text: value,
-        status: '1'
+        description: value,
+        checked: '1'
       });
     },
     /**
@@ -32,7 +32,6 @@ export default {
      * conforme action faz alteração na lista
      */
     actionItemList(value) {
-      console.log(value);
       if (value.action == 'delete') {
         this.deleteItemList(value)
       }
@@ -45,7 +44,7 @@ export default {
      */
     deleteItemList(value) {
       this.itemsList.map((i, k) => {
-        if (i.id == value.item.id) {
+        if (i._id == value.item._id) {
           this.itemsList.splice(k, 1)
         }
       })
@@ -55,9 +54,9 @@ export default {
      */
     changeStateItemList(value) {
       let itemsList = this.itemsList.find((i) => {
-        return i.id == value.item.id
+        return i._id == value.item._id
       })
-      itemsList.status = value.status
+      itemsList.checked = value.checked
     },
   },
 }
